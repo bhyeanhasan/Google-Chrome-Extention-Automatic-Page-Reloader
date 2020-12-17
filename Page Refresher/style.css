@@ -1,0 +1,33 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    /*background: #3c3f41;*/
+    /*color: white;*/
+}
+p{
+    margin: 0px;
+    padding: 0px;
+}
+img{
+    width: 30px;
+    height: 32px;
+}
+input{
+    margin: 5px;
+}
+button{
+    width: 50%;
+    margin: 20px;
+}
+a{
+    margin: 0px;
+    padding: 0px;
+}
+button{
+    margin: 0px;
+    padding: 0px;
+}
+div{
+    margin: 0px;
+    padding: 0px;
+}
