@@ -9,11 +9,55 @@ $(document).ready(function () {
     var secup = $('.secup');
     var secdn = $('.secdn');
 
-
-    off.hide();
     alter.hide();
-    on.hide();
     bb.hide();
+
+    chrome.storage.local.get(['is'], function(result) {
+
+        if(result.is == true)
+        {
+            alter.show();
+            off.one('click', clickoff);
+        }
+        else if (result.is == false)
+        {
+            bb.show();
+            on.one('click', clickon);
+        }
+        else {
+            chrome.storage.local.set({'is': false}, function() {});
+            bb.show();
+            on.one('click', clickon);
+        }
+
+    });
+
+    chrome.storage.local.get(['min','sec'], function(result) {
+
+        document.getElementById('min').value = 0;           //jodi min age save na thake
+        document.getElementById('sec').value = 10;          //jodi sec age save na thake
+
+        if(result.min != undefined )
+        {
+            document.getElementById('min').value = result.min;
+        }
+        if(result.sec != undefined)
+        {
+            document.getElementById('sec').value = result.sec;
+        }
+
+        let mintime = document.getElementById('min').value;
+        let sectime = document.getElementById('sec').value;
+        let time = parseInt(mintime)*1.00+(parseInt(sectime)*1.00/60);
+        chrome.storage.local.set({'time': time}, function() {});
+
+    });
+
+    chrome.storage.local.get(['time'], function(result) {
+
+        document.getElementById('time').innerHTML = result.time.toFixed(4);
+        
+    });
 
     minup.click(function()
     {
@@ -47,67 +91,29 @@ $(document).ready(function () {
     });
 
 
-
-
-
-    chrome.storage.local.get(['min','sec'], function(result) {
-
-        document.getElementById('min').value = 0;
-        document.getElementById('sec').value = 10;
-
-        if(result.min != undefined )
-        {
-            document.getElementById('min').value = result.min;
-
-        }
-        if(result.sec != undefined)
-        {
-            document.getElementById('sec').value = result.sec;
-        }
-
-    });
-
-
-
-    chrome.storage.local.get(['is'], function(result) {
-        if(result.is == true)
-        {
-            off.show();
-            alter.show();
-            off.one('click', clickoff);
-        }
-        else if (result.is == false)
-        {
-            on.show();
-            bb.show();
-            on.one('click', clickon);
-        }
-        else {
-            chrome.storage.local.set({'is': false}, function() {});
-            on.show();
-            bb.show();
-        }
-    });
-
     on.one('click', clickon);
 
     function clickon() {
-        on.hide();
-        off.show();
         bb.hide();
         alter.show();
         chrome.storage.local.set({'is': true}, function() {});
-        let min = document.getElementById("min").value;
-        let sec = document.getElementById("sec").value;
-        if(min == undefined) min = 0;
-        if(sec == undefined) sec = 10;
-        chrome.storage.local.set({'min': min, 'sec': sec}, function() {});
+     
+        mintime = document.getElementById('min').value;
+        sectime = document.getElementById('sec').value;
+        var time = parseInt(mintime)*1.00+(parseInt(sectime)*1.00/60);
+        chrome.storage.local.set({'time': time}, function() {});
+        chrome.storage.local.set({'min': mintime, 'sec': sectime}, function() {});
+
+        chrome.storage.local.get(['time'], function(result) {
+
+            document.getElementById('time').innerHTML = result.time.toFixed(4);
+            
+        });
+
         off.one('click', clickoff);
     }
 
     function clickoff() {
-        off.hide();
-        on.show();
         bb.show();
         alter.hide();
         chrome.storage.local.set({'is': false}, function() {});

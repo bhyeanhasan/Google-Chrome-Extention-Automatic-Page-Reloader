@@ -1,4 +1,3 @@
-
 var alarmClock = {
 
     onHandler : function(e)
@@ -8,11 +7,12 @@ var alarmClock = {
             let page = tabs[0].id;
             chrome.runtime.sendMessage({todo : page, kok : "baby"});
         });
-        var mintime = document.getElementById('min').value;
-        var sectime = document.getElementById('sec').value;
-        var time = parseInt(mintime)*1.00+(parseInt(sectime)*1.00/60);
-        document.getElementById('time').innerHTML = time.toFixed(4);
-        chrome.alarms.create("myAlarm", {delayInMinutes: 0.1, periodInMinutes: time} );
+
+        chrome.storage.local.get(['time'], function(result) {
+
+            var time = parseFloat(result.time);
+            chrome.alarms.create("myAlarm", {delayInMinutes: 0.1, periodInMinutes: time} );
+        });
 
     },
 
@@ -31,3 +31,4 @@ var alarmClock = {
 document.addEventListener('DOMContentLoaded', function () {
     alarmClock.setup();
 });
+

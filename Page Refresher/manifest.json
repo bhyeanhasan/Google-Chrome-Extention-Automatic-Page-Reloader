@@ -2,7 +2,8 @@
     "name"              :   "Auto Page Refresher",
     "description"       :   "Simple auto page loader, developed by Noyon (PSTU-CSE)",
     "version"           :   "1.0.0",
-    "manifest_version"  :   2,
+    "manifest_version"  :    2,
+
     "icons"             :   {
                                 "64": "icons/64.png",
                                 "128": "icons/128.png",
@@ -16,7 +17,7 @@
 
     "background"        :   {
                                 "scripts"       : ["background.js"],
-                                "persistent"    : false
+                                "persistent"    :  true
                             },
 
     "browser_action":       {

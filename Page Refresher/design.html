@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Page Refresher</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -11,13 +10,15 @@
     <script src="jquery.min.js"></script>
     <script src="my.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-<body>
-<div style="height: 240px;width: 220px;text-align: center">
-<!--    <h3 style="background: coral;border: medium;border-radius: 10px;">Page ReLoader</h3>-->
 
-    <div style="height: 190px" class="bb">
+<body style="background-color: rgb(111, 0, 255);">
+
+
+<div style="height: 250px;width: 220px;text-align: center; margin: 5px;background-color: white">
+
+    <!-- front part -->
+    <div class="bb">
         <h3 style="color: coral">Time Setup</h3>
-
         <div style="width: 50%;float: left" class="left">
             <h5>Minutes</h5>
             <a class="minup" href="#"><img src="up.png"></a>
@@ -32,33 +33,24 @@
             <input id="sec" style="width: 90px;color: darkblue" type="text" value="10"><br>
             <a class="secdn" href="#"><img src="down.png"></a>
         </div>
+        <div>
+            <button class="on down_btn btn btn-primary" href="" id="alarmOn">ON</button>
+        </div>
     </div>
 
-    <div style="height: 190px" class="alter">
+    <!-- back part -->
+    <div class="alter">
         <h3 style="color: coral">Congratulations</h3>
         <h4 style="margin-top: 20px">Auto refreshing has been started</h4>
         <h4 style="margin-top: 20px">This tab will reload after <br><span id="time" style="color: red"></span> min</h4>
         <a href="https://bhyeanhasan.me/" target="_blank">Visit Me</a>
+        <div>
+            <button class="off down_btn btn btn-danger" href="" id="alarmOff">OFF</button>
+        </div>
     </div>
-
-
-
-    <div>
-
-            <button class="on btn btn-primary" href="" id="alarmOn">ON</button>
-            <button class="off btn btn-danger" href="" id="alarmOff">OFF</button>
-
-    </div>
-
-
-
-
-
-
-
-
 
 </div>
+
 <script src="front.js"></script>
 </body>
 </html>
